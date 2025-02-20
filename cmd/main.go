@@ -1,6 +1,7 @@
 package main
 
 import (
+	"GO_TUT/configs"
 	"GO_TUT/internal/handlers"
 
 	"github.com/gin-gonic/gin"
@@ -8,11 +9,13 @@ import (
 
 func main() {
 
+	configs.ConnectDb() //Подключение
+
 	r := gin.Default()
 
-	r.POST("/ping", handlers.CreateUser)
+	r.POST("/users", handlers.CreateUser) //Ввод данных о пользователе
 
-	r.GET("/ping", handlers.ShowUser)
+	r.GET("/users", handlers.ShowUser) //Вывод данных о пользователе
 
 	r.Run(":8080")
 
